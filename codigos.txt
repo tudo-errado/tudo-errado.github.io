@@ -10,5 +10,5 @@ git config --global credential.helper manager
 7. git commit -m "comentario/versão" (Para gravar o ponto no histórico)
 8. git remote add origin LINK_DO_SEU_REPOSITORIO
 9. git pull origin main --allow-unrelated-histories
-10. git push -u origin main
+10. git push origin main
 11. git branch -M main (Para garantir que estamos na branch principal)
