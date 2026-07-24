@@ -1,0 +1,13 @@
+git config --global init.defaultBranch main
+git config --global credential.helper manager
+
+1. cmdkey /list | findstr /I "git:"
+2. cmdkey /delete:
+3. git config user.name "tudo-errado"
+4. git config user.email "andrade.manu.oli@gmail.com"
+5. git init
+6. git add .
+7. git commit -m "comentario/versão" (Para gravar o ponto no histórico)
+8. git remote add origin LINK_DO_SEU_REPOSITORIO
+9. git push -u origin main
+10. git branch -M main (Para garantir que estamos na branch principal)
