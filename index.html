@@ -4,28 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>smart control</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
-    <header>
-        <img src="assets/images/logo-smart.webp" alt="logo_smartcontrol" width="64" height="auto">
-    </header>
+    <div class="container">
+        <div class="login">
+            <header>
+                <img src="assets/images/logo-smart.webp" alt="logo_smartcontrol" width="64" height="auto">
+                <h1>Login</h1>
+            </header>
 
-    <h1>Cadastro de Usuário</h1>
-    <h3>Preencha os dados para acessar o sistema</h3>
-    <form action="dashboard.html" method="get">
-        
-        <label for="email">E-mail corporativo</label>
-        <input type="email" name="email_corporativo" id="email" required>
-        <label for="senha">Senha de acesso</label>
-        <input type="password" name="senha" id="senha" required minlength="8">
-        <button type="submit">Fazer login</button>
-       
-        <a href="cadastro.html">Criar conta</a>
+            <form action="dashboard.html" method="get">
+                
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="E-mail" required>
+                </div>
 
-    </form>
 
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Senha" required>
+                </div>
+                
+                <a class="esqueceu" href="senha_1.html">Esqueceu a senha?</a>
+                
+                <button type="submit">Fazer login</button>
+
+                <p>
+                    Não possui uma conta?
+                    <a href="cadastro.html">Crie uma aqui</a>
+                </p>    
+
+            </form>
+
+        </div>
+
+        <div class="imagem"></div>
+
+    </div>
 
 </body>
-
 
 </html>
