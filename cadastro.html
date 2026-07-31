@@ -4,38 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>smart control</title>
+    <link rel="stylesheet" href="assets/style_2.css">
 </head>
 
 <body>
-    <header>
-        <img src="assets/images/logo-smart.webp" alt="logo_smartcontrol" width="64" height="auto">
-        <h1>Cadastro de Usuário</h1>
-    </header>
+    <div class="container">
+        <div class="login">
+            <div class="logo">
+                <img src="assets/images/logosmartcontrol.png" alt="logo_smartcontrol">
+                <h2>Smart Control</h2>
+            </div>
 
-    <h3>Preencha os dados para acessar o sistema</h3>
-    <form action="dashboard.html" method="get">
-        <label for="nome_completo">Nome completo</label>
-        <input type="text" name="nome_completo" id="nome_completo" placeholder="Digite se nome" required>
-        <label for="email">E-mail corporativo</label>
-        <input type="email" name="email_corporativo" id="email" required>
-        <label for="senha">Senha de acesso</label>
-        <input type="password" name="senha" id="senha" required minlength="8" placeholder="digite uma senha">
-        <input type="password" name="senha" id="senha" required minlength="8" placeholder="confirmar senha">
+            <form action="dashboard.html" method="get">
+                <div class="escrita">
+                    <h1>Preencha os dados para acessar o sistema</h1>
+                </div>
 
-        
-        <select name="nivel de acesso" id="acesso" required>
-            <option value="nivel 1">nivel 1</option>
-            <option value="nivel 2">nivel 2</option>
-            <option value="nivel 3">nivel 3</option>
-        </select>
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <label for="nome_completo">Nome completo</label>
+                    <input type="text" name="nome_completo" id="nome_completo" placeholder="Digite se nome" required>
+                </div>    
 
-        <label for="termos">Concordo com os Termos de Uso</label>
-        <input type="checkbox" name= "termos_uso" id="termos" required>
-        <button type="submit">Cadastrar</button>
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <label for="email">E-mail</label>
+                    <input type="email" placeholder="E-mail" required>
+                </div>
 
-        <a href="index.html">Fazer login</a>
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <label for="email">Senha</label>
+                    <input type="password" placeholder="Senha" required maxlength="8">
+                </div>
 
-    </form>
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <label for="email">Confirmar Senha</label>
+                    <input type="password" placeholder="Confirmar Senha" required minlength="8">
+                </div>
+
+                
+                
+                <button type="submit">Criar Conta</button>
+                
+                <p>
+                    Já possui uma conta?
+                    <a href="index.html">Faça Login aqui</a>
+                </p>    
+            </form>
+
+        </div>
+
+        <div class="imagem"></div>
+
+    </div>
 
 </body>
 

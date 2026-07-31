@@ -10,22 +10,27 @@
 <body>
     <div class="container">
         <div class="login">
-            <header>
-                <img src="assets/images/logo-smart.webp" alt="logo_smartcontrol" width="64" height="auto">
-                <h1>Login</h1>
-            </header>
-
+            <div class="logo">
+                <img src="assets/images/logosmartcontrol.png" alt="logo_smartcontrol">
+                <h2>Smart Control</h2>
+            </div>
+            
             <form action="dashboard.html" method="get">
+                <div class="escrita">
+                    <h1>Login</h1>
+                </div>
                 
                 <div class="input-box">
                     <i class="fa-solid fa-envelope"></i>
+                    <label for="email">E-mail</label>
                     <input type="email" placeholder="E-mail" required>
                 </div>
 
 
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" placeholder="Senha" required>
+                    <label for="email">Senha</label>
+                    <input type="password" placeholder="Senha" required minlength="8">
                 </div>
                 
                 <a class="esqueceu" href="senha_1.html">Esqueceu a senha?</a>

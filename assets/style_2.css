@@ -29,7 +29,8 @@ body{
 }
 
 .escrita{
-    padding-left: 130px;
+    text-align: center;
+    width: 700px;
 }
 
 .logo{
@@ -141,7 +142,7 @@ button{
     font-size: 20px;
     font-weight: bold;
 
-    cursor:pointer;
+    cursor: pointer;
 
     transition: 0.5s;
 }
