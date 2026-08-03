@@ -29,7 +29,7 @@ body{
 }
 
 .escrita{
-    padding-left: 136px;
+    padding-left: 80px;
 }
 
 .logo{
@@ -119,16 +119,6 @@ form{
     box-sizing: border-box;
 }
 
-.esqueceu{
-    text-align: right;
-
-    color: #67aeff;
-
-    text-decoration: none;
-
-    font-size: 14px;
-}
-
 button{
     height: 50px;
 
@@ -150,12 +140,3 @@ button:hover{
     background: #FFE120;
 }
 
-p{
-    text-align: center;
-    color: #f2f2f2;
-}
-
-p a{
-    color: #67aeff;
-    text-decoration: none;
-}

@@ -4,21 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar senha</title>
+    <link rel="stylesheet" href="assets/style_3.2.css">
 </head>
 <body>
-    <header>
-        <img src="assets/images/logosmartcontrol.png" alt="logo_smartcontrol" width="64" height="auto">
-        <h1>Redefinição De Senha</h1>
-    </header>
+    <div class="container">
+        <div class="login">
 
-   
-    <form action="senha_3.html" method="get">
-        
-        <label for="codigo">Digite o código recebido no se email</label>
-        <input type="text" name="codigo" id="codigo" required minlength="6" maxlength="6">
-        <button type="submit">Avançar</button>
-       
-    </form>
+            <div class="logo">
+                <img src="assets/images/logosmartcontrol.png" alt="logo_smartcontrol">
+                <h2>Smart Control</h2>
+            </div>
+            
+            <form action="senha_3.html" method="get">
+                
+                <div class="escrita">
+                    <h1>Redefinição de senha</h1>
+                </div>
+                
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <label for="codigo">Digite o código recebido no se email</label>
+                    <input type="text" name="codigo" id="codigo" required minlength="6" maxlength="6">
+                </div>  
+
+                <button type="submit">Avançar</button>
+            
+            </form>
+
+        </div>
+
+        <div class="imagem"></div>
+
+    </div>    
 
 </body>
 </html>

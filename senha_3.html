@@ -4,22 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar senha</title>
+    <link rel="stylesheet" href="assets/style_3.3.css">
 </head>
 <body>
-    <header>
-        <img src="assets/images/logosmartcontrol.png" alt="logo_smartcontrol" width="64" height="auto">
-        <h1>Redefinição De Senha</h1>
-    </header>
+    <div class="container">
+        <div class="login">
+            <div class="logo">
+                <img src="assets/images/logosmartcontrol.png" alt="logo_smartcontrol">
+                <h2>Smart Control</h2>
+            </div>
 
-    <form action="index.html" method="get">
+            <form action="index.html" method="get">
 
-        <label for="senha">Nova Senha</label>
-        <input type="password" name="senha" id="senha" required minlength="8">
-        <label for="senha">Confirmar Senha</label>
-        <input type="password" name="senha" id="senha" required minlength="8">
-        <button type="submit">Redefinir</button>
-       
-    </form>
+                <div class="escrita">
+                    <h1>Redefinição de senha</h1>
+                </div>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <label for="email">Nova Senha</label>
+                    <input type="password" placeholder="Senha" required minlength="8">
+                </div>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <label for="email">Confirmar Senha</label>
+                    <input type="password" placeholder="Senha" required minlength="8">
+                </div>
+
+                <button type="submit">Redefinir</button>
+            
+            </form>
+
+        </div>
+
+        <div class="imagem"></div>
+
+    </div>
 
 </body>
 </html>
