@@ -1,42 +1,61 @@
 body{
-
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
-
+    height: 100dvh;
     font-family: Arial, sans-serif;
     color: #f2f2f2;
 }
 
 .container{
     width: 100%;
-    height: 100vh;
 }
 
 .logo{
-
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 12px;
-
+    justify-content: space-between;
+    height: 10dvh;
     background-color: #000000;
 }
 
+.smartcontrol {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#smart {
+    color: #f2f2f2;
+}
+
+#control {
+    color: #FFE120;
+}
+
 .logo img{
-    width: 55px;
-    height: 55px;
+    width: 5.8dvh;
+    height: 5.8dvh;
 }
 
 .logo h1{
     color: #f2f2f2;
-    font-size: 28px;
+    font-size: 2.6rem;
     margin: 0;
     font-weight: 600;
 }
 
 .logo svg{
-
     background-color: #404040;
-    border-radius: 15px;
+    border-radius: 1.5dvh;
+    margin-right: 1.5dvh;
+}
+
+.info{
+    height: 15dvh;
+    margin-left: 1.5dvh;
+    margin-top: 1.5dvh;
+    margin-right: 1.5dvh;
+    border: 0.2dvh ridge #CCCCCC;
+    border-radius: 1.5dvh;
 }
