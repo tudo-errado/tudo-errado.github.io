@@ -58,4 +58,19 @@ body{
     margin-right: 1.5dvh;
     border: 0.2dvh ridge #CCCCCC;
     border-radius: 1.5dvh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+    text-align: center;
+    color: #000000;
 }
+
+.info svg{
+    background-color: #FFE120;
+    border-radius: 3dvh;
+
+    width: 3vw;
+    height: 3vh;
+}
+
