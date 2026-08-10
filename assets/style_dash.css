@@ -64,13 +64,53 @@ body{
     justify-content:space-around;
     text-align: center;
     color: #000000;
+    text-align:justify;
 }
 
 .info svg{
     background-color: #FFE120;
     border-radius: 3dvh;
+    
+    width: 3dvh;
+    height: 3dvh;
+}
 
-    width: 3vw;
-    height: 3vh;
+.info >div:not(:last-child) {
+    position: relative;
+    border-right: none;
+}
+
+.info >div:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -25%;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background-color: #CCCCCC;
+}
+
+.energia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dispositivos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.temperatura {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.segurança {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
