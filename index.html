@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>smart control</title>
+    <title>Smart Control | Login</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
@@ -14,62 +14,85 @@
                 <img src="assets/images/logosmartcontrol.png" alt="logo_smartcontrol">
                 <h2>Smart Control</h2>
             </div>
-            
-            <form action="dashboard.html" method="get" id="login-form">
+
+            <form id="login-form">
                 <div class="escrita">
                     <h1>Login</h1>
                 </div>
-                
+
                 <div class="input-box">
                     <i class="fa-solid fa-envelope"></i>
-                    <label for="email">E-mail</label>
-                    <input type="email" id="login-email" placeholder="E-mail" required>
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" placeholder="E-mail" autocomplete="email" required>
                 </div>
-
 
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
-                    <label for="email">Senha</label>
-                    <input type="password" id="login-senha" placeholder="Senha" required minlength="8">
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" placeholder="Senha" autocomplete="current-password" required minlength="8" maxlength="8">
                 </div>
-                
+
                 <a class="esqueceu" href="senha_1.html">Esqueceu a senha?</a>
-                
+
+                <p id="login-erro" role="alert" aria-live="polite"></p>
+
                 <button type="submit">Fazer login</button>
 
                 <p>
                     Não possui uma conta?
                     <a href="cadastro.html">Crie uma aqui</a>
-                </p>    
-
+                </p>
             </form>
-
         </div>
 
         <div class="imagem"></div>
-
     </div>
 
-
     <script>
-        document.getElementById('login-form')?.addEventListener('submit', function (e) {
-            var usuarioSalvo = null;
-            try { usuarioSalvo = JSON.parse(localStorage.getItem('smartcontrol_usuario')); } catch (err) {}
+        const CHAVE_USUARIO = 'smartcontrol_usuario';
+        const formularioLogin = document.getElementById('login-form');
+        const mensagemLogin = document.getElementById('login-erro');
+
+        async function gerarHash(texto) {
+            const dados = new TextEncoder().encode(texto);
+            const hash = await crypto.subtle.digest('SHA-256', dados);
+            return Array.from(new Uint8Array(hash))
+                .map(byte => byte.toString(16).padStart(2, '0'))
+                .join('');
+        }
+
+        function obterUsuario() {
+            try {
+                return JSON.parse(localStorage.getItem(CHAVE_USUARIO));
+            } catch (erro) {
+                return null;
+            }
+        }
+
+        formularioLogin.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            mensagemLogin.textContent = '';
+
+            const usuarioSalvo = obterUsuario();
+            const email = document.getElementById('login-email').value.trim().toLowerCase();
+            const senha = document.getElementById('login-senha').value;
 
             if (!usuarioSalvo) {
-                e.preventDefault();
-                alert('Você ainda não tem uma conta. Vamos te levar para criar uma primeiro.');
-                window.location.href = 'cadastro.html';
+                mensagemLogin.textContent = 'Você ainda não possui uma conta. Crie uma primeiro.';
                 return;
             }
 
-            var email = document.getElementById('login-email').value.trim().toLowerCase();
-            if (usuarioSalvo.email && email && usuarioSalvo.email.toLowerCase() !== email) {
-                usuarioSalvo.email = email;
-                localStorage.setItem('smartcontrol_usuario', JSON.stringify(usuarioSalvo));
+            const senhaHash = await gerarHash(senha);
+            const emailCorreto = usuarioSalvo.email === email;
+            const senhaCorreta = usuarioSalvo.senhaHash === senhaHash;
+
+            if (!emailCorreto || !senhaCorreta) {
+                mensagemLogin.textContent = 'E-mail ou senha incorretos.';
+                return;
             }
+
+            window.location.href = 'dashboard.html';
         });
     </script>
 </body>
-
 </html>

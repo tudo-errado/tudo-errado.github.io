@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>smart control</title>
+    <title>Smart Control | Cadastro</title>
     <link rel="stylesheet" href="assets/style_2.css">
 </head>
 
@@ -15,51 +15,101 @@
                 <h2>Smart Control</h2>
             </div>
 
-            <form action="dashboard.html" method="get">
+            <form id="cadastro-form">
                 <div class="escrita">
                     <h1>Preencha os dados para acessar o sistema</h1>
                 </div>
 
                 <div class="input-box">
-                    <i class="fa-solid fa-envelope"></i>
+                    <i class="fa-solid fa-user"></i>
                     <label for="nome_completo">Nome completo</label>
-                    <input type="text" name="nome_completo" id="nome_completo" placeholder="Digite se nome" required>
-                </div>    
+                    <input type="text" name="nome_completo" id="nome_completo" placeholder="Digite seu nome" autocomplete="name" required>
+                </div>
 
                 <div class="input-box">
                     <i class="fa-solid fa-envelope"></i>
-                    <label for="email">E-mail</label>
-                    <input type="email" placeholder="E-mail" required>
+                    <label for="cadastro-email">E-mail</label>
+                    <input type="email" name="email" id="cadastro-email" placeholder="E-mail" autocomplete="email" required>
                 </div>
 
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
-                    <label for="email">Senha</label>
-                    <input type="password" placeholder="Senha" required maxlength="8">
+                    <label for="cadastro-senha">Senha</label>
+                    <input type="password" name="senha" id="cadastro-senha" placeholder="Senha" autocomplete="new-password" required minlength="8" maxlength="8">
                 </div>
 
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
-                    <label for="email">Confirmar Senha</label>
-                    <input type="password" placeholder="Confirmar Senha" required minlength="8">
+                    <label for="confirmar-senha">Confirmar Senha</label>
+                    <input type="password" name="confirmar_senha" id="confirmar-senha" placeholder="Confirmar Senha" autocomplete="new-password" required minlength="8" maxlength="8">
                 </div>
 
-                
-                
+                <p id="cadastro-erro" role="alert" aria-live="polite"></p>
+
                 <button type="submit">Criar Conta</button>
-                
+
                 <p>
                     Já possui uma conta?
                     <a href="index.html">Faça Login aqui</a>
-                </p>    
+                </p>
             </form>
-
         </div>
 
         <div class="imagem"></div>
-
     </div>
 
-</body>
+    <script>
+        const CHAVE_USUARIO = 'smartcontrol_usuario';
+        const formulario = document.getElementById('cadastro-form');
+        const mensagemErro = document.getElementById('cadastro-erro');
 
+        async function gerarHash(texto) {
+            const dados = new TextEncoder().encode(texto);
+            const hash = await crypto.subtle.digest('SHA-256', dados);
+            return Array.from(new Uint8Array(hash))
+                .map(byte => byte.toString(16).padStart(2, '0'))
+                .join('');
+        }
+
+        formulario.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            mensagemErro.textContent = '';
+
+            const nome = document.getElementById('nome_completo').value.trim();
+            const email = document.getElementById('cadastro-email').value.trim().toLowerCase();
+            const senha = document.getElementById('cadastro-senha').value;
+            const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+            if (nome.length < 2) {
+                mensagemErro.textContent = 'Digite seu nome completo.';
+                return;
+            }
+
+            if (senha.length < 8) {
+                mensagemErro.textContent = 'A senha deve ter 8 caracteres.';
+                return;
+            }
+
+            if (senha !== confirmarSenha) {
+                mensagemErro.textContent = 'As senhas não coincidem.';
+                return;
+            }
+
+            try {
+                const senhaHash = await gerarHash(senha);
+                const usuario = {
+                    nome,
+                    email,
+                    senhaHash
+                };
+
+                localStorage.setItem(CHAVE_USUARIO, JSON.stringify(usuario));
+                window.location.href = 'dashboard.html';
+            } catch (erro) {
+                console.error(erro);
+                mensagemErro.textContent = 'Não foi possível salvar a conta. Tente novamente.';
+            }
+        });
+    </script>
+</body>
 </html>

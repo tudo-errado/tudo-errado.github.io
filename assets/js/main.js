@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ---------- AUTENTICAÇÃO SIMPLES (localStorage) ---------- */
     const CHAVE_USUARIO = 'smartcontrol_usuario';
 
     function obterUsuario() {
@@ -14,8 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const paginaAtual = location.pathname.split('/').pop();
     const usuario = obterUsuario();
 
-    // O dashboard exige um usuário cadastrado/logado.
-    // Caso não exista nenhum, a pessoa precisa criar uma conta primeiro.
+
     if (paginaAtual === 'dashboard.html' && !usuario) {
         window.location.href = 'index.html';
         return;
@@ -33,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (avatar) avatar.textContent = inicial;
     }
 
-    /* ---------- MENU HAMBÚRGUER (esquerda) ---------- */
+    /* menu esquerda */
     const menuToggle = document.getElementById('menu-toggle');
     const sideMenu = document.getElementById('side-menu');
     const menuOverlay = document.getElementById('menu-overlay');
@@ -82,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ---------- DROPDOWN DE PERFIL (direita) ---------- */
+    /* menu direita*/
     const profileToggle = document.getElementById('profile-toggle');
     const profileMenu = document.getElementById('profile-menu');
 
@@ -116,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem(CHAVE_USUARIO);
     });
 
-    /* ---------- TEMA CLARO / ESCURO ---------- */
+    /* tema claro e escuro */
     const CHAVE_TEMA = 'smartcontrol_tema';
     const themeToggle = document.getElementById('theme-toggle');
     const raiz = document.documentElement;
@@ -133,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
         aplicarTema(themeToggle.checked ? 'dark' : 'light');
     });
 
-    /* ---------- BUSCA NO DASHBOARD ---------- */
     const campoBusca = document.getElementById('card-search');
     const limparBusca = document.getElementById('clear-search');
     const semResultados = document.getElementById('no-results');
@@ -160,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
         campoBusca?.focus();
     });
 
-    /* ---------- AÇÕES RÁPIDAS ---------- */
     document.getElementById('add-device')?.addEventListener('click', () => {
         mostrarToast('Funcionalidade em desenvolvimento.');
     });
@@ -172,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ---------- TOAST ---------- */
     let toastTimer = null;
     function mostrarToast(mensagem) {
         const toast = document.getElementById('toast');
