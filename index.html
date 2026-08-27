@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
                 <h2>Smart Control</h2>
             </div>
             
-            <form action="dashboard.html" method="get">
+            <form action="dashboard.html" method="get" id="login-form">
                 <div class="escrita">
                     <h1>Login</h1>
                 </div>
@@ -23,14 +23,14 @@
                 <div class="input-box">
                     <i class="fa-solid fa-envelope"></i>
                     <label for="email">E-mail</label>
-                    <input type="email" placeholder="E-mail" required>
+                    <input type="email" id="login-email" placeholder="E-mail" required>
                 </div>
 
 
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
                     <label for="email">Senha</label>
-                    <input type="password" placeholder="Senha" required minlength="8">
+                    <input type="password" id="login-senha" placeholder="Senha" required minlength="8">
                 </div>
                 
                 <a class="esqueceu" href="senha_1.html">Esqueceu a senha?</a>
@@ -50,6 +50,26 @@
 
     </div>
 
+
+    <script>
+        document.getElementById('login-form')?.addEventListener('submit', function (e) {
+            var usuarioSalvo = null;
+            try { usuarioSalvo = JSON.parse(localStorage.getItem('smartcontrol_usuario')); } catch (err) {}
+
+            if (!usuarioSalvo) {
+                e.preventDefault();
+                alert('Você ainda não tem uma conta. Vamos te levar para criar uma primeiro.');
+                window.location.href = 'cadastro.html';
+                return;
+            }
+
+            var email = document.getElementById('login-email').value.trim().toLowerCase();
+            if (usuarioSalvo.email && email && usuarioSalvo.email.toLowerCase() !== email) {
+                usuarioSalvo.email = email;
+                localStorage.setItem('smartcontrol_usuario', JSON.stringify(usuarioSalvo));
+            }
+        });
+    </script>
 </body>
 
 </html>

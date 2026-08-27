@@ -4,59 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dashboard do SmartControl">
-    <title>dashboard</title>
+    <title>Dashboard | SmartControl</title>
     <link rel="stylesheet" href="assets/style_dash.css">
 </head>
 
 <body>
     <div class="container">
-            
-            <header class="topbar">
+
+        <header class="topbar">
             <div class="topbar-left">
-                <button class="menu-button" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+                <button class="menu-button" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="side-menu">
                     <span></span><span></span><span></span>
                 </button>
 
                 <div class="brand-area">
-                    <button class="brand-button" id="brand-toggle" type="button" aria-expanded="false" aria-controls="brand-menu">
-                        <img src="assets/images/logosmartcontrol.png" alt="" class="brand-icon">
-                        <span><strong>Smart</strong><em>Control</em></span>
-                    </button>
-                    <ul class="dropdown-menu brand-menu" id="brand-menu">
-                        <li><a href="#ambientes">Ambientes</a></li>
-                        <li><a href="#favoritos">Favoritos</a></li>
-                        <li><a href="#cenas">Cenas rápidas</a></li>
-                        <li><a href="#seguranca">Segurança</a></li>
-                    </ul>
+                    <img src="assets/images/logosmartcontrol.png" alt="" class="brand-icon">
+                    <span class="brand-name"><strong>Smart</strong><em>Control</em></span>
                 </div>
             </div>
 
             <div class="page-title">Início</div>
 
             <div class="header-actions">
-                <button id="theme-toggle" class="header-icon" type="button" aria-label="Ativar modo escuro" title="Alternar tema">☾</button>
                 <div class="profile-area">
                     <button id="profile-toggle" class="avatar-button" type="button" aria-label="Abrir menu de perfil" aria-expanded="false" aria-controls="profile-menu">U</button>
-                    <ul class="dropdown-menu profile-menu" id="profile-menu">
-                        <li><a href="#perfil">Meu perfil</a></li>
-                        <li><a href="#configuracoes">Configurações</a></li>
-                        <li><a href="index.html">Sair</a></li>
-                    </ul>
+                    <div class="dropdown-menu profile-menu" id="profile-menu">
+                        <div class="profile-welcome">Bem vindo(a), <strong id="profile-username">Visitante</strong></div>
+
+                        <a href="#perfil" class="profile-item">
+                            <span class="profile-icon">
+                                <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><circle cx="8" cy="5" r="3"/><path d="M8 9c-3.3 0-6 1.8-6 4v1h12v-1c0-2.2-2.7-4-6-4z"/></svg>
+                            </span>
+                            <span>Perfil</span>
+                        </a>
+
+                        <a href="#configuracoes" class="profile-item">
+                            <span class="profile-icon">
+                                <svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="2" y1="4" x2="14" y2="4"/><circle cx="6" cy="4" r="1.6" fill="currentColor" stroke="none"/><line x1="2" y1="8" x2="14" y2="8"/><circle cx="10" cy="8" r="1.6" fill="currentColor" stroke="none"/><line x1="2" y1="12" x2="14" y2="12"/><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>
+                            </span>
+                            <span>Configurações</span>
+                        </a>
+
+                        <div class="profile-item theme-row">
+                            <span class="profile-icon theme-icon">☾</span>
+                            <span>Tema escuro</span>
+                            <label class="theme-switch">
+                                <input type="checkbox" id="theme-toggle" aria-label="Alternar tema escuro">
+                                <span class="theme-switch-track"></span>
+                            </label>
+                        </div>
+
+                        <a href="index.html" class="profile-item" id="logout-link">
+                            <span class="profile-icon">
+                                <svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/><path d="M8 8h7"/><path d="M12 5l3 3-3 3"/></svg>
+                            </span>
+                            <span>Log Out</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </header>
-        
-            <aside class="side-menu" id="side-menu" aria-hidden="true">
-            <nav>
-                <a href="#ambientes">⌂ <span>Ambientes</span></a>
-                <a href="#favoritos">▣ <span>Favoritos</span></a>
-                <a href="#cenas">◷ <span>Cenas rápidas</span></a>
-                <a href="#seguranca">◇ <span>Segurança</span></a>
-            </nav>
-            </aside>
-            <div class="menu-overlay" id="menu-overlay"></div>
 
-            <main class="main-content">
+        <aside class="side-menu" id="side-menu" aria-hidden="true">
+            <nav>
+                <a href="#inicio" class="side-link active" data-page="inicio">
+                    <span class="side-icon"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.2"/><rect x="9" y="1" width="6" height="6" rx="1.2"/><rect x="1" y="9" width="6" height="6" rx="1.2"/><rect x="9" y="9" width="6" height="6" rx="1.2"/></svg></span>
+                    <span>Início</span>
+                </a>
+                <a href="#dispositivos" class="side-link" data-page="dispositivos">
+                    <span class="side-icon"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor"><rect x="1" y="2" width="14" height="9" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="6" y="12.6" width="4" height="1.4" rx="0.5"/></svg></span>
+                    <span>Dispositivos</span>
+                </a>
+                <a href="#conexoes" class="side-link" data-page="conexoes">
+                    <span class="side-icon"><svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/><path d="M5.2 5.2a4 4 0 0 0 0 5.6"/><path d="M10.8 5.2a4 4 0 0 1 0 5.6"/><path d="M3 3a8 8 0 0 0 0 10"/><path d="M13 3a8 8 0 0 1 0 10"/></svg></span>
+                    <span>Conexões</span>
+                </a>
+                <a href="#assistencia" class="side-link" data-page="assistencia">
+                    <span class="side-icon"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor"><rect x="2" y="1" width="1.3" height="14" rx="0.5"/><path d="M3.5 2h9l-2.3 3 2.3 3h-9z"/></svg></span>
+                    <span>Assistência</span>
+                </a>
+                <a href="#cenas" class="side-link" data-page="cenas">
+                    <span class="side-icon"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor"><path d="M4 2.5v11l10-5.5z"/></svg></span>
+                    <span>Cenas</span>
+                </a>
+            </nav>
+        </aside>
+        <div class="menu-overlay" id="menu-overlay"></div>
+
+        <main class="main-content">
             <div class="search-row">
                 <div class="search-box">
                     <span class="search-icon">⌕</span>
@@ -66,116 +101,115 @@
                 <button class="quick-action" type="button" id="add-device">＋ Adicionar dispositivo</button>
             </div>
 
-        <!--Linha 1-->
-        <section class="info">
+            <!--Linha 1-->
+            <section class="info">
 
-            <div class="energia">
-                <svg width="24" height="24" 
-                fill="currentColor" xmlns="http://www.w3.org/2000/svg"   
-                class="bi bi-lightning-charge" viewBox="0 0 16 16"><path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"/></svg>
-                <div class="texto">
-                    <h2>Consumo de energia</h2>
-                    <h1>12.4 kWh</h1>
-                    <h4>8% a mais que ontem</h4>
+                <div class="energia">
+                    <svg width="24" height="24"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                    class="bi bi-lightning-charge" viewBox="0 0 16 16"><path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"/></svg>
+                    <div class="texto">
+                        <h2>Consumo de energia</h2>
+                        <h1>12.4 kWh</h1>
+                        <h4>8% a mais que ontem</h4>
+                    </div>
                 </div>
-            </div>
-            <!--energia-->
-            <div class="dispositivos">
-                <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 438.536 438.536" ><g><g><path d="M352.733,75.226c-8.466-16.271-19.599-29.787-33.394-40.541c-13.801-10.752-29.413-19.223-46.821-25.41 C255.1,3.094,237.349,0,219.266,0s-35.832,3.09-53.247,9.276c-17.417,6.187-33.025,14.657-46.826,25.41 c-13.796,10.754-24.932,24.267-33.402,40.541c-8.47,16.274-12.703,33.83-12.703,52.677c0,29.502,9.805,55.006,29.409,76.516 c8.567,9.324,15.656,17.604,21.271,24.838c5.617,7.228,11.279,16.316,16.989,27.261c5.708,10.944,8.945,21.176,9.707,30.696 c-8.947,5.332-13.418,13.135-13.418,23.415c0,7.042,2.378,13.134,7.139,18.274c-4.76,5.14-7.139,11.231-7.139,18.273 c0,9.897,4.285,17.604,12.85,23.131c-2.478,4.373-3.715,8.847-3.715,13.415c0,8.754,2.996,15.516,8.992,20.27 c5.992,4.757,13.369,7.139,22.126,7.139c3.806,8.374,9.519,15.037,17.13,19.985s15.891,7.419,24.838,7.419 c8.949,0,17.227-2.471,24.838-7.419c7.614-4.948,13.329-11.611,17.135-19.985c8.754,0,16.132-2.382,22.124-7.139 c5.995-4.754,8.99-11.516,8.99-20.27c0-4.568-1.239-9.042-3.717-13.415c8.562-5.523,12.851-13.233,12.851-23.131 c0-7.042-2.382-13.134-7.139-18.273c4.757-5.141,7.139-11.232,7.139-18.274c0-10.28-4.474-18.083-13.422-23.415 c0.763-9.521,4-19.752,9.708-30.696c5.719-10.944,11.376-20.033,16.995-27.261c5.619-7.234,12.706-15.515,21.265-24.838 c19.605-21.51,29.414-47.014,29.414-76.516C365.447,109.056,361.211,91.5,352.733,75.226z M309.484,179.292 c-1.906,2.093-4.808,5.232-8.709,9.421c-3.898,4.187-6.8,7.324-8.703,9.419c-24.362,29.126-37.78,57.482-40.255,85.078h-65.1 c-2.474-27.596-15.891-55.952-40.256-85.078c-1.903-2.093-4.805-5.232-8.709-9.419c-3.899-4.189-6.805-7.325-8.708-9.421 c-12.941-15.037-19.414-32.168-19.414-51.389c0-13.706,3.284-26.458,9.851-38.262c6.571-11.801,15.136-21.458,25.697-28.979 c10.562-7.521,22.266-13.418,35.116-17.701c12.847-4.286,25.837-6.423,38.972-6.423s26.125,2.137,38.971,6.423 c12.847,4.283,24.551,10.181,35.115,17.701c10.561,7.52,19.13,17.181,25.693,28.979c6.563,11.803,9.853,24.556,9.853,38.262 C328.898,147.124,322.427,164.255,309.484,179.292z" /><path d="M247.674,86.795c-9.418-3.046-18.891-4.57-28.404-4.57c-2.474,0-4.615,0.9-6.423,2.712 c-1.809,1.809-2.712,3.949-2.712,6.423s0.904,4.615,2.712,6.423c1.809,1.805,3.949,2.712,6.423,2.712 c9.9,0,19.985,2.38,30.272,7.135c10.273,4.758,15.406,11.516,15.406,20.273c0,2.473,0.9,4.618,2.711,6.423 c1.813,1.804,3.949,2.708,6.42,2.708c2.478,0,4.616-0.901,6.427-2.708c1.811-1.809,2.71-3.951,2.71-6.423 c0-9.9-3.572-18.464-10.704-25.693C265.38,94.98,257.095,89.835,247.674,86.795z" /></g></g></svg>
-                <div class="texto">
-                    <h2>Dispositivos ativos</h2>
-                    <h1>18</h1>
-                    <h4>18 de 24 dispositivos estão</h4>
+                <!--energia-->
+                <div class="dispositivos">
+                    <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 438.536 438.536" ><g><g><path d="M352.733,75.226c-8.466-16.271-19.599-29.787-33.394-40.541c-13.801-10.752-29.413-19.223-46.821-25.41 C255.1,3.094,237.349,0,219.266,0s-35.832,3.09-53.247,9.276c-17.417,6.187-33.025,14.657-46.826,25.41 c-13.796,10.754-24.932,24.267-33.402,40.541c-8.47,16.274-12.703,33.83-12.703,52.677c0,29.502,9.805,55.006,29.409,76.516 c8.567,9.324,15.656,17.604,21.271,24.838c5.617,7.228,11.279,16.316,16.989,27.261c5.708,10.944,8.945,21.176,9.707,30.696 c-8.947,5.332-13.418,13.135-13.418,23.415c0,7.042,2.378,13.134,7.139,18.274c-4.76,5.14-7.139,11.231-7.139,18.273 c0,9.897,4.285,17.604,12.85,23.131c-2.478,4.373-3.715,8.847-3.715,13.415c0,8.754,2.996,15.516,8.992,20.27 c5.992,4.757,13.369,7.139,22.126,7.139c3.806,8.374,9.519,15.037,17.13,19.985s15.891,7.419,24.838,7.419 c8.949,0,17.227-2.471,24.838-7.419c7.614-4.948,13.329-11.611,17.135-19.985c8.754,0,16.132-2.382,22.124-7.139 c5.995-4.754,8.99-11.516,8.99-20.27c0-4.568-1.239-9.042-3.717-13.415c8.562-5.523,12.851-13.233,12.851-23.131 c0-7.042-2.382-13.134-7.139-18.273c4.757-5.141,7.139-11.232,7.139-18.274c0-10.28-4.474-18.083-13.422-23.415 c0.763-9.521,4-19.752,9.708-30.696c5.719-10.944,11.376-20.033,16.995-27.261c5.619-7.234,12.706-15.515,21.265-24.838 c19.605-21.51,29.414-47.014,29.414-76.516C365.447,109.056,361.211,91.5,352.733,75.226z M309.484,179.292 c-1.906,2.093-4.808,5.232-8.709,9.421c-3.898,4.187-6.8,7.324-8.703,9.419c-24.362,29.126-37.78,57.482-40.255,85.078h-65.1 c-2.474-27.596-15.891-55.952-40.256-85.078c-1.903-2.093-4.805-5.232-8.709-9.419c-3.899-4.189-6.805-7.325-8.708-9.421 c-12.941-15.037-19.414-32.168-19.414-51.389c0-13.706,3.284-26.458,9.851-38.262c6.571-11.801,15.136-21.458,25.697-28.979 c10.562-7.521,22.266-13.418,35.116-17.701c12.847-4.286,25.837-6.423,38.972-6.423s26.125,2.137,38.971,6.423 c12.847,4.283,24.551,10.181,35.115,17.701c10.561,7.52,19.13,17.181,25.693,28.979c6.563,11.803,9.853,24.556,9.853,38.262 C328.898,147.124,322.427,164.255,309.484,179.292z" /><path d="M247.674,86.795c-9.418-3.046-18.891-4.57-28.404-4.57c-2.474,0-4.615,0.9-6.423,2.712 c-1.809,1.809-2.712,3.949-2.712,6.423s0.904,4.615,2.712,6.423c1.809,1.805,3.949,2.712,6.423,2.712 c9.9,0,19.985,2.38,30.272,7.135c10.273,4.758,15.406,11.516,15.406,20.273c0,2.473,0.9,4.618,2.711,6.423 c1.813,1.804,3.949,2.708,6.42,2.708c2.478,0,4.616-0.901,6.427-2.708c1.811-1.809,2.71-3.951,2.71-6.423 c0-9.9-3.572-18.464-10.704-25.693C265.38,94.98,257.095,89.835,247.674,86.795z" /></g></g></svg>
+                    <div class="texto">
+                        <h2>Dispositivos ativos</h2>
+                        <h1>18</h1>
+                        <h4>18 de 24 dispositivos estão</h4>
+                    </div>
                 </div>
-            </div>
-            <!--dispositivos-->
-            <div class="temperatura">
-                <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"   class="bi bi-thermometer" viewBox="0 0 16 16"><path d="M8 14a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/><path d="M8 0a2.5 2.5 0 0 0-2.5 2.5v7.55a3.5 3.5 0 1 0 5 0V2.5A2.5 2.5 0 0 0 8 0zM6.5 2.5a1.5 1.5 0 1 1 3 0v7.987l.167.15a2.5 2.5 0 1 1-3.333 0l.166-.15V2.5z"/></svg>
-                <div class="texto">
-                    <h2>Temperatura média</h2>
-                    <h1>24°C</h1>
-                    <h4>Sala de estar</h4>
+                <!--dispositivos-->
+                <div class="temperatura">
+                    <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"   class="bi bi-thermometer" viewBox="0 0 16 16"><path d="M8 14a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/><path d="M8 0a2.5 2.5 0 0 0-2.5 2.5v7.55a3.5 3.5 0 1 0 5 0V2.5A2.5 2.5 0 0 0 8 0zM6.5 2.5a1.5 1.5 0 1 1 3 0v7.987l.167.15a2.5 2.5 0 1 1-3.333 0l.166-.15V2.5z"/></svg>
+                    <div class="texto">
+                        <h2>Temperatura média</h2>
+                        <h1>24°C</h1>
+                        <h4>Sala de estar</h4>
+                    </div>
                 </div>
-            </div>
-            <!--temperatura-->
-            <div class="segurança">
-                <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"   class="bi bi-shield-check" viewBox="0 0 16 16"><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/><path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/></svg>
-                <div class="texto">
-                    <h2>Segurança</h2>
-                    <h1>Tudo seguro</h1>
-                    <h4>Nenhum alerta</h4>
+                <!--temperatura-->
+                <div class="seguranca">
+                    <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"   class="bi bi-shield-check" viewBox="0 0 16 16"><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/><path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/></svg>
+                    <div class="texto">
+                        <h2>Segurança</h2>
+                        <h1>Tudo seguro</h1>
+                        <h4>Nenhum alerta</h4>
+                    </div>
                 </div>
+                <!--segurança-->
+            </section>
+
+            <!--linhas 1 e 2-->
+            <div class="conteudo-principal">
+
+                <!--ESQUERDA-->
+                <div class="esquerda">
+                    <section class="lado-esquerdo">
+
+                        <section class="panel environments-panel searchable-card" id="ambientes" data-search="ambientes sala de estar cozinha quarto escritório banheiro garagem">
+                            <div class="panel-heading"><h2>Ambientes</h2><button class="text-button" type="button">Ver todos</button></div>
+                            <div class="rooms-grid">
+                                <button class="room-card active" type="button"><span class="room-art">▱</span><b>Sala de estar</b><small>4 dispositivos</small><span class="switch on"></span></button>
+                                <button class="room-card" type="button"><span class="room-art">⌂</span><b>Cozinha</b><small>3 dispositivos</small><span class="switch"></span></button>
+                                <button class="room-card" type="button"><span class="room-art">▰</span><b>Quarto</b><small>2 dispositivos</small><span class="switch"></span></button>
+                                <button class="room-card" type="button"><span class="room-art">▥</span><b>Escritório</b><small>2 dispositivos</small><span class="switch"></span></button>
+                                <button class="room-card" type="button"><span class="room-art">♧</span><b>Banheiro</b><small>2 dispositivos</small><span class="switch"></span></button>
+                                <button class="room-card" type="button"><span class="room-art">▱</span><b>Garagem</b><small>5 dispositivos</small><span class="switch"></span></button>
+                            </div>
+                        </section>
+
+                        <section class="panel favorites-panel searchable-card" id="favoritos" data-search="dispositivos favoritos luz sala ar condicionado tv cortina">
+                            <div class="panel-heading"><h2>Dispositivos favoritos</h2><button class="text-button" type="button">Ver todos</button></div>
+                            <div class="favorites-grid">
+                                <button class="device-card" type="button"><span class="device-icon">♧</span><b>Luz da sala</b><small>Sala de estar</small><strong>100%</strong><i>⋮</i></button>
+                                <button class="device-card" type="button"><span class="device-icon">❄</span><b>Ar condicionado</b><small>Sala de estar</small><strong>22°C</strong><i>⋮</i></button>
+                                <button class="device-card" type="button"><span class="device-icon">▣</span><b>TV</b><small>Sala de estar</small><strong>Desligado</strong><i>⋮</i></button>
+                                <button class="device-card" type="button"><span class="device-icon">▥</span><b>Cortina</b><small>Quarto</small><strong>Aberta 80%</strong><i>⋮</i></button>
+                            </div>
+                        </section>
+
+                    </section>
+                </div>
+
+                <!--DIREITA-->
+                <div class="direita">
+                    <section class="lado-direito">
+
+                        <section class="panel scenes-panel searchable-card" id="cenas" data-search="cenas rápidas cheguei em casa saindo de casa noite cinema hora dormir automações">
+                            <div class="panel-heading"><h2>Cenas rápidas</h2><button class="text-button" type="button">Ver todas</button></div>
+                            <div class="scenes-list">
+                                <button class="scene-card" type="button"><span>⌂</span><b>Cheguei em casa</b><i>▶</i></button>
+                                <button class="scene-card" type="button"><span>♧</span><b>Saindo de casa</b><i>▶</i></button>
+                                <button class="scene-card" type="button"><span>▣</span><b>Noite de cinema</b><i>▶</i></button>
+                                <button class="scene-card" type="button"><span>◔</span><b>Hora de dormir</b><i>▶</i></button>
+                            </div>
+                        </section>
+
+                        <section class="panel chart-panel searchable-card" data-search="consumo de energia gráfico hoje kwh histórico">
+                            <div class="panel-heading"><div><h2>Consumo de energia</h2><strong class="chart-value">12.4 <small>kWh</small></strong></div><select aria-label="Período do gráfico"><option>Hoje</option><option>Semana</option><option>Mês</option></select></div>
+                            <div class="chart-wrap">
+                                <div class="chart-y"><span>2.0</span><span>1.5</span><span>1.0</span><span>0.5</span><span>0.0</span></div>
+                                <svg class="chart" viewBox="0 0 520 190" role="img" aria-label="Gráfico de consumo de energia ao longo do dia">
+                                    <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-opacity=".35"/><stop offset="1" stop-opacity=".02"/></linearGradient></defs>
+                                    <g class="grid-lines"><line x1="0" y1="20" x2="520" y2="20"/><line x1="0" y1="55" x2="520" y2="55"/><line x1="0" y1="90" x2="520" y2="90"/><line x1="0" y1="125" x2="520" y2="125"/><line x1="0" y1="160" x2="520" y2="160"/></g>
+                                    <path class="chart-area" d="M0 135 L22 140 L45 118 L68 130 L91 105 L114 130 L137 120 L160 125 L183 75 L206 105 L229 90 L252 35 L275 48 L298 110 L321 105 L344 120 L367 118 L390 135 L413 130 L436 145 L459 138 L482 150 L520 145 L520 160 L0 160 Z"/>
+                                    <polyline class="chart-line" points="0,135 22,140 45,118 68,130 91,105 114,130 137,120 160,125 183,75 206,105 229,90 252,35 275,48 298,110 321,105 344,120 367,118 390,135 413,130 436,145 459,138 482,150 520,145"/>
+                                </svg>
+                            </div>
+                            <div class="chart-x"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+                        </section>
+
+                    </section>
+                </div>
+
             </div>
-            <!--segurança-->
-        </section>
-
-        <!--linhas 1 e 2-->
-        <div class="conteudo-principal">
-
-            <!--ESQUERDA!!!!!-->
-            <div class="esquerda">
-                <section class="lado-esquerdo">
-
-                    <section class="panel environments-panel searchable-card" id="ambientes" data-search="ambientes sala de estar cozinha quarto escritório banheiro garagem">
-                        <div class="panel-heading"><h2>Ambientes</h2><button class="text-button" type="button">Ver todos</button></div>
-                        <div class="rooms-grid">
-                            <button class="room-card active" type="button"><span class="room-art">▱</span><b>Sala de estar</b><small>4 dispositivos</small><span class="switch on"></span></button>
-                            <button class="room-card" type="button"><span class="room-art">⌂</span><b>Cozinha</b><small>3 dispositivos</small><span class="switch"></span></button>
-                            <button class="room-card" type="button"><span class="room-art">▰</span><b>Quarto</b><small>2 dispositivos</small><span class="switch"></span></button>
-                            <button class="room-card" type="button"><span class="room-art">▥</span><b>Escritório</b><small>2 dispositivos</small><span class="switch"></span></button>
-                            <button class="room-card" type="button"><span class="room-art">♧</span><b>Banheiro</b><small>2 dispositivos</small><span class="switch"></span></button>
-                            <button class="room-card" type="button"><span class="room-art">▱</span><b>Garagem</b><small>5 dispositivos</small><span class="switch"></span></button>
-                        </div>
-                    </section>
-
-                    <section class="panel favorites-panel searchable-card" id="favoritos" data-search="dispositivos favoritos luz sala ar condicionado tv cortina">
-                        <div class="panel-heading"><h2>Dispositivos favoritos</h2><button class="text-button" type="button">Ver todos</button></div>
-                        <div class="favorites-grid">
-                            <button class="device-card" type="button"><span class="device-icon">♧</span><b>Luz da sala</b><small>Sala de estar</small><strong>100%</strong><i>⋮</i></button>
-                            <button class="device-card" type="button"><span class="device-icon">❄</span><b>Ar condicionado</b><small>Sala de estar</small><strong>22°C</strong><i>⋮</i></button>
-                            <button class="device-card" type="button"><span class="device-icon">▣</span><b>TV</b><small>Sala de estar</small><strong>Desligado</strong><i>⋮</i></button>
-                            <button class="device-card" type="button"><span class="device-icon">▥</span><b>Cortina</b><small>Quarto</small><strong>Aberta 80%</strong><i>⋮</i></button>
-                        </div>
-                    </section>
-
-                </section>
-            </div>
-
-            <!--DIREITA!!!!!!-->
-            <div class="direita">
-                <section class="lado-direito">
-
-                    <section class="panel scenes-panel searchable-card" id="cenas" data-search="cenas rápidas cheguei em casa saindo de casa noite cinema hora dormir automações">
-                        <div class="panel-heading"><h2>Cenas rápidas</h2><button class="text-button" type="button">Ver todas</button></div>
-                        <div class="scenes-list">
-                            <button class="scene-card" type="button"><span>⌂</span><b>Cheguei em casa</b><i>▶</i></button>
-                            <button class="scene-card" type="button"><span>♧</span><b>Saindo de casa</b><i>▶</i></button>
-                            <button class="scene-card" type="button"><span>▣</span><b>Noite de cinema</b><i>▶</i></button>
-                            <button class="scene-card" type="button"><span>◔</span><b>Hora de dormir</b><i>▶</i></button>
-                        </div>
-                    </section>
-
-                    <section class="panel chart-panel searchable-card" data-search="consumo de energia gráfico hoje kwh histórico">
-                        <div class="panel-heading"><div><h2>Consumo de energia</h2><strong class="chart-value">12.4 <small>kWh</small></strong></div><select aria-label="Período do gráfico"><option>Hoje</option><option>Semana</option><option>Mês</option></select></div>
-                        <div class="chart-wrap">
-                            <div class="chart-y"><span>2.0</span><span>1.5</span><span>1.0</span><span>0.5</span><span>0.0</span></div>
-                            <svg class="chart" viewBox="0 0 520 190" role="img" aria-label="Gráfico de consumo de energia ao longo do dia">
-                                <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-opacity=".35"/><stop offset="1" stop-opacity=".02"/></linearGradient></defs>
-                                <g class="grid-lines"><line x1="0" y1="20" x2="520" y2="20"/><line x1="0" y1="55" x2="520" y2="55"/><line x1="0" y1="90" x2="520" y2="90"/><line x1="0" y1="125" x2="520" y2="125"/><line x1="0" y1="160" x2="520" y2="160"/></g>
-                                <path class="chart-area" d="M0 135 L22 140 L45 118 L68 130 L91 105 L114 130 L137 120 L160 125 L183 75 L206 105 L229 90 L252 35 L275 48 L298 110 L321 105 L344 120 L367 118 L390 135 L413 130 L436 145 L459 138 L482 150 L520 145 L520 160 L0 160 Z"/>
-                                <polyline class="chart-line" points="0,135 22,140 45,118 68,130 91,105 114,130 137,120 160,125 183,75 206,105 229,90 252,35 275,48 298,110 321,105 344,120 367,118 390,135 413,130 436,145 459,138 482,150 520,145"/>
-                            </svg>
-                        </div>
-                        <div class="chart-x"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
-                    </section>
-                
-                </section>
-
-            </div> 
-
-        </div>
-        <p class="no-results" id="no-results" hidden>Nenhum item encontrado para sua pesquisa.</p>
-
+            <p class="no-results" id="no-results" hidden>Nenhum item encontrado para sua pesquisa.</p>
+        </main>
 
     </div>
 
