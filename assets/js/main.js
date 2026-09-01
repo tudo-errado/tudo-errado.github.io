@@ -161,10 +161,44 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarToast('Funcionalidade em desenvolvimento.');
     });
 
-    document.querySelectorAll('.room-card .switch').forEach(sw => {
-        sw.parentElement?.addEventListener('click', (e) => {
+    /* ambientes: estado ligado/desligado + visual persistente */
+    const CHAVE_AMBIENTES = 'smartcontrol_ambientes';
+    const cartoesAmbientes = document.querySelectorAll('.room-card');
+
+    function obterEstadosAmbientes() {
+        try {
+            return JSON.parse(localStorage.getItem(CHAVE_AMBIENTES)) || {};
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function salvarEstadosAmbientes(estados) {
+        localStorage.setItem(CHAVE_AMBIENTES, JSON.stringify(estados));
+    }
+
+    const estadosAmbientes = obterEstadosAmbientes();
+
+    cartoesAmbientes.forEach((card, indice) => {
+        const sw = card.querySelector('.switch');
+        const nome = card.querySelector('b')?.textContent.trim() || `ambiente-${indice}`;
+        const estadoSalvo = Object.prototype.hasOwnProperty.call(estadosAmbientes, nome)
+            ? Boolean(estadosAmbientes[nome])
+            : card.classList.contains('active') || sw?.classList.contains('on');
+
+        card.classList.toggle('active', estadoSalvo);
+        sw?.classList.toggle('on', estadoSalvo);
+
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
             e.stopPropagation();
-            sw.classList.toggle('on');
+
+            const novoEstado = !card.classList.contains('active');
+            card.classList.toggle('active', novoEstado);
+            sw?.classList.toggle('on', novoEstado);
+
+            estadosAmbientes[nome] = novoEstado;
+            salvarEstadosAmbientes(estadosAmbientes);
         });
     });
 
