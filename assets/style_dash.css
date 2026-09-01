@@ -37,7 +37,6 @@ body{
 
 .container{ width: 100%; min-height: 100dvh; }
 
-/* TOPBAR */
 .topbar{
     position: sticky;
     top: 0;
@@ -544,7 +543,16 @@ a.profile-item:hover, .profile-item:hover{ background: rgba(255,255,255,.08); }
 .room-card:hover{ border-color: var(--amarelo); }
 .room-card:active{ transform: scale(.98); }
 
-.room-card.active{ border-color: var(--amarelo); box-shadow: 0 0 0 2px rgba(255,225,32,.35); }
+.room-card.active{
+    border: 2px solid var(--amarelo);
+    background: #fffbea;
+    box-shadow: 0 0 0 1px rgba(255,225,32,.15);
+}
+
+html[data-theme="dark"] .room-card.active {
+    border-color: #C9A900;
+    background: #3A351F;
+}
 
 .room-art{ font-size: 1.5rem; }
 
