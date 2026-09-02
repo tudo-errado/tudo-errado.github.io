@@ -157,10 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
         campoBusca?.focus();
     });
 
-    document.getElementById('add-device')?.addEventListener('click', () => {
-        mostrarToast('Funcionalidade em desenvolvimento.');
-    });
-
     /* ambientes: estado ligado/desligado + visual persistente */
     const CHAVE_AMBIENTES = 'smartcontrol_ambientes';
     const cartoesAmbientes = document.querySelectorAll('.room-card');
@@ -212,4 +208,163 @@ document.addEventListener('DOMContentLoaded', () => {
         toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
     }
 
+    /* dispositivos */
+    const botaoAdicionarDispositivo = document.getElementById('adicionar-dispositivo');
+    const listaDispositivos = document.getElementById('lista-dispositivos');
+    const CHAVE_DISPOSITIVOS = 'smartcontrol_dispositivos';
+
+    function obterDispositivos() {
+        try { const dados = JSON.parse(localStorage.getItem(CHAVE_DISPOSITIVOS)); return Array.isArray(dados) ? dados : []; }
+        catch (e) { return []; }
+    }
+    function salvarDispositivos(dispositivos) { localStorage.setItem(CHAVE_DISPOSITIVOS, JSON.stringify(dispositivos)); }
+    function criarItemDispositivo(nome) {
+        const item=document.createElement('button'); item.type='button'; item.className='item-dispositivo';
+        item.innerHTML='<span class="icone-dispositivo" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span><span class="nome-dispositivo"></span>';
+        item.querySelector('.nome-dispositivo').textContent=nome; return item;
+    }
+    if (listaDispositivos) obterDispositivos().forEach(nome => listaDispositivos.appendChild(criarItemDispositivo(nome)));
+    botaoAdicionarDispositivo?.addEventListener('click', () => {
+        const nomeLimpo=(prompt('Digite o nome do dispositivo:') || '').trim();
+        if (!nomeLimpo || !listaDispositivos) return;
+        listaDispositivos.appendChild(criarItemDispositivo(nomeLimpo));
+        const dispositivos=obterDispositivos(); dispositivos.push(nomeLimpo); salvarDispositivos(dispositivos);
+    });
+
+    /* conexões */
+    document.getElementById('adicionar-conta')?.addEventListener('click', () => {
+        const nome = prompt('Digite o nome da conta:');
+        if (!nome || !nome.trim()) return;
+        const lista = document.querySelector('.lista-conexoes');
+        if (!lista) return;
+        const item = document.createElement('div');
+        item.className = 'item-conexao';
+        item.innerHTML = `<div class="avatar-conexao">◉</div><div class="informacoes-conexao"><span class="nome-conexao"></span><small>Membro</small></div>`;
+        item.querySelector('.nome-conexao').textContent = nome.trim();
+        lista.appendChild(item);
+    });
+
+    /* =========================
+   CENAS
+========================= */
+
+const adicionarCena = document.getElementById("adicionar-cena");
+const minhasCenas = document.getElementById("minhas-cenas");
+const menuCenas = document.getElementById("menu-cenas");
+const listaCenas = document.getElementById("lista-cenas");
+
+
+// Recupera as cenas salvas
+let cenasSalvas = JSON.parse(
+    localStorage.getItem("cenasSmartControl") || "[]"
+);
+
+
+// Atualiza a lista
+function atualizarListaCenas() {
+
+    if (!listaCenas) return;
+
+    listaCenas.innerHTML = "";
+
+    cenasSalvas.forEach(cena => {
+
+        const item = document.createElement("div");
+
+        item.className = "item-cena";
+
+        item.textContent = cena;
+
+        listaCenas.appendChild(item);
+
+    });
+}
+
+
+// Abrir/fechar menu "Adicionar cena"
+if (adicionarCena && menuCenas) {
+
+    adicionarCena.addEventListener("click", function () {
+
+        menuCenas.classList.toggle("aberto");
+
+        const seta = adicionarCena.querySelector(".seta-cena");
+
+        if (seta) {
+            seta.style.transform =
+                menuCenas.classList.contains("aberto")
+                    ? "rotate(180deg)"
+                    : "rotate(0deg)";
+        }
+
+    });
+
+
+    // Selecionar uma cena
+    menuCenas.querySelectorAll("button").forEach(botao => {
+
+        botao.addEventListener("click", function (evento) {
+
+            evento.stopPropagation();
+
+            const nomeCena = this.dataset.cena;
+
+            if (!nomeCena) return;
+
+
+            // Evita duplicar cenas
+            if (!cenasSalvas.includes(nomeCena)) {
+
+                cenasSalvas.push(nomeCena);
+
+                localStorage.setItem(
+                    "cenasSmartControl",
+                    JSON.stringify(cenasSalvas)
+                );
+
+            }
+
+
+            atualizarListaCenas();
+
+            menuCenas.classList.remove("aberto");
+
+            const seta = adicionarCena.querySelector(".seta-cena");
+
+            if (seta) {
+                seta.style.transform = "rotate(0deg)";
+            }
+
+        });
+
+    });
+
+}
+
+
+// Abrir/fechar "Minhas cenas"
+if (minhasCenas && listaCenas) {
+
+    minhasCenas.addEventListener("click", function () {
+
+        listaCenas.classList.toggle("aberta");
+
+        const seta = minhasCenas.querySelector(".seta-cena");
+
+        if (seta) {
+
+            seta.style.transform =
+                listaCenas.classList.contains("aberta")
+                    ? "rotate(180deg)"
+                    : "rotate(0deg)";
+
+        }
+
+    });
+
+}
+
+
+// Carrega as cenas quando a página abre
+atualizarListaCenas();
 });

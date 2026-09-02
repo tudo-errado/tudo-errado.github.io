@@ -3,9 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dispositivos - SmartControl</title>
+    <link rel="stylesheet" href="assets/style_cenass.css">
 </head>
 <body>
-    
+    <div class="container">
+
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-button" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="side-menu">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <div class="brand-area">
+                    <img src="assets/images/logosmartcontrol.png" alt="" class="brand-icon">
+                    <span class="brand-name"><strong>Smart</strong><em>Control</em></span>
+                </div>
+            </div>
+
+            <div class="page-title">Dispositivos</div>
+
+            <div class="header-actions">
+                <div class="profile-area">
+                    <button id="profile-toggle" class="avatar-button" type="button" aria-label="Abrir menu de perfil" aria-expanded="false" aria-controls="profile-menu">U</button>
+                    <div class="dropdown-menu profile-menu" id="profile-menu">
+                        <div class="profile-welcome">Bem vindo(a), <strong id="profile-username">Visitante</strong></div>
+
+                        <a href="#perfil" class="profile-item">
+                            <span class="profile-icon">
+                                <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><circle cx="8" cy="5" r="3"/><path d="M8 9c-3.3 0-6 1.8-6 4v1h12v-1c0-2.2-2.7-4-6-4z"/></svg>
+                            </span>
+                            <span>Perfil</span>
+                        </a>
+
+                        <a href="#configuracoes" class="profile-item">
+                            <span class="profile-icon">
+                                <svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="2" y1="4" x2="14" y2="4"/><circle cx="6" cy="4" r="1.6" fill="currentColor" stroke="none"/><line x1="2" y1="8" x2="14" y2="8"/><circle cx="10" cy="8" r="1.6" fill="currentColor" stroke="none"/><line x1="2" y1="12" x2="14" y2="12"/><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>
+                            </span>
+                            <span>Configurações</span>
+                        </a>
+
+                        <div class="profile-item theme-row">
+                            <span class="profile-icon theme-icon">☾</span>
+                            <span>Tema escuro</span>
+                            <label class="theme-switch">
+                                <input type="checkbox" id="theme-toggle" aria-label="Alternar tema escuro">
+                                <span class="theme-switch-track"></span>
+                            </label>
+                        </div>
+
+                        <a href="index.html" class="profile-item" id="logout-link">
+                            <span class="profile-icon">
+                                <svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/><path d="M8 8h7"/><path d="M12 5l3 3-3 3"/></svg>
+                            </span>
+                            <span>Log Out</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <aside class="side-menu" id="side-menu" aria-hidden="true">
+            <nav>
+                <a href="dashboard.html" class="side-link">
+                    <span class="side-icon">
+                        <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+                            <rect x="1" y="1" width="6" height="6" rx="1.2"/>
+                            <rect x="9" y="1" width="6" height="6" rx="1.2"/>
+                            <rect x="1" y="9" width="6" height="6" rx="1.2"/>
+                            <rect x="9" y="9" width="6" height="6" rx="1.2"/>
+                        </svg>
+                    </span>
+                    <span>Início</span>
+                </a>
+                <a href="dispositivos.html" class="side-link active">
+                    <span class="side-icon">
+                        <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+                            <rect x="1" y="2" width="14" height="9" rx="1.4"
+                                fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <rect x="6" y="12.6" width="4" height="1.4" rx="0.5"/>
+                        </svg>
+                    </span>
+                    <span>Dispositivos</span>
+                </a>
+                <a href="conexoes.html" class="side-link">
+                    <span class="side-icon">
+                        <svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4">
+                            <circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/>
+                            <path d="M5.2 5.2a4 4 0 0 0 0 5.6"/>
+                            <path d="M10.8 5.2a4 4 0 0 1 0 5.6"/>
+                            <path d="M3 3a8 8 0 0 0 0 10"/>
+                            <path d="M13 3a8 8 0 0 1 0 10"/>
+                        </svg>
+                    </span>
+                    <span>Conexões</span>
+                </a>
+                <a href="assistencia.html" class="side-link">
+                    <span class="side-icon">
+                        <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+                            <rect x="2" y="1" width="1.3" height="14" rx="0.5"/>
+                            <path d="M3.5 2h9l-2.3 3 2.3 3h-9z"/>
+                        </svg>
+                    </span>
+                    <span>Assistência</span>
+                </a>
+                <a href="cenas.html" class="side-link">
+                    <span class="side-icon">
+                        <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+                            <path d="M4 2.5v11l10-5.5z"/>
+                        </svg>
+                    </span>
+                    <span>Cenas</span>
+                </a>
+            </nav>
+        </aside>
+        <div class="menu-overlay" id="menu-overlay"></div>
+<main class="pagina-cenas">
+
+    <section class="painel-cenas">
+
+        <!-- ADICIONAR CENA -->
+        <div class="seletor-cena" id="adicionar-cena">
+
+            <div class="lado-esquerdo-cena">
+                <span class="icone-reproduzir">▶</span>
+                <span>Adicionar cena</span>
+            </div>
+
+            <span class="seta-cena">⌄</span>
+
+        </div>
+
+        <!-- MENU PARA ADICIONAR CENA -->
+        <div class="menu-cenas" id="menu-cenas">
+
+            <button type="button" data-cena="Filme">
+                Filme
+            </button>
+
+            <button type="button" data-cena="Festa">
+                Festa
+            </button>
+
+            <button type="button" data-cena="Estudo">
+                Estudo
+            </button>
+
+        </div>
+
+
+        <!-- MINHAS CENAS -->
+        <div class="seletor-cena" id="minhas-cenas">
+
+            <div class="lado-esquerdo-cena">
+                <span class="icone-reproduzir">▶</span>
+                <span>Minhas cenas</span>
+            </div>
+
+            <span class="seta-cena">⌄</span>
+
+        </div>
+
+        <!-- LISTA DAS CENAS SALVAS -->
+        <div class="lista-cenas" id="lista-cenas"></div>
+
+    </section>
+
+</main>
+        <script src="assets/js/main.js"></script>
+    </div>
+
 </body>
 </html>
