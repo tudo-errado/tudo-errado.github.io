@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartControl - Perfil</title>
+
+    <link rel="stylesheet" href="assets/style_perfil.css">
+</head>
+
+<body>
+
+    <div class="pagina-perfil">
+
+        <header class="cabecalho">
+
+            <div class="lado-esquerdo-cabecalho">
+
+                <button
+                    class="botao-menu"
+                    id="botao-menu"
+                    type="button"
+                    aria-label="Abrir menu">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+                <div class="marca">
+
+                    <img
+                        src="assets/images/logosmartcontrol.png"
+                        class="icone-marca"
+                        alt="">
+
+                    <span class="nome-marca">
+                        <strong>Smart</strong><em>Control</em>
+                    </span>
+
+                </div>
+
+            </div>
+
+            <button
+                class="botao-voltar"
+                id="botao-voltar"
+                type="button"
+                aria-label="Voltar">
+
+                ←
+
+            </button>
+
+        </header>
+
+        <aside
+            class="menu-lateral"
+            id="menu-lateral">
+
+            <nav>
+
+                <a href="dashboard.html" class="link-menu">
+                    <span>▦</span>
+                    Início
+                </a>
+
+                <a href="dispositivos.html" class="link-menu">
+                    <span>▣</span>
+                    Dispositivos
+                </a>
+
+                <a href="conexoes.html" class="link-menu">
+                    <span>◉</span>
+                    Conexões
+                </a>
+
+                <a href="assistencia.html" class="link-menu">
+                    <span>⚑</span>
+                    Assistência
+                </a>
+
+                <a href="cenas.html" class="link-menu">
+                    <span>▶</span>
+                    Cenas
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <main class="conteudo-perfil">
+
+            <div class="banner-perfil">
+
+                <img
+                    src="assets/images/bannerperfil.png"
+                    alt=""
+                    class="imagem-banner">
+
+            </div>
+
+            <section class="area-informacoes">
+
+                <div class="area-avatar">
+
+                    <img
+                        src="assets/images/avatar.png"
+                        alt="Foto de perfil"
+                        class="avatar-perfil">
+
+                    <button
+                        class="botao-imagem"
+                        id="botao-imagem"
+                        type="button"
+                        aria-label="Alterar imagem">
+
+                        <span class="icone-imagem">
+                            ▲
+                        </span>
+
+                    </button>
+
+                </div>
+
+                <div class="area-nome">
+
+                    <span
+                        class="nome-usuario"
+                        id="nome-usuario">
+
+                        ZeroEsquerda
+
+                    </span>
+
+                    <button
+                        class="botao-editar-nome"
+                        id="botao-editar-nome"
+                        type="button"
+                        aria-label="Editar nome">
+
+                        ♢
+
+                    </button>
+
+                </div>
+
+                <div class="campo-bio">
+
+                    <label>
+                        Bio
+                    </label>
+
+                    <textarea
+                        id="campo-bio"
+                        maxlength="160">A essência de algo é encontrada em sua ausência.</textarea>
+
+                </div>
+
+                <div class="linha-dados">
+
+                    <div class="campo-dado email">
+
+                        <label>
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="campo-email"
+                            value="zeroesquerda@gmail.com.br">
+
+                    </div>
+
+
+                    <div class="campo-dado identificacao">
+
+                        <label>
+                            ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="campo-id"
+                            value="#0106742"
+                            readonly>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TELEFONE -->
+
+                <div class="campo-dado telefone">
+
+                    <label>
+                        Telefone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="campo-telefone"
+                        value="+55 (16) 99867-4221">
+
+                </div>
+
+                <div class="opcoes-perfil">
+
+
+                    <!-- PRIVACIDADE -->
+
+                    <div class="opcao-perfil">
+
+                        <label class="interruptor">
+
+                            <input
+                                type="checkbox"
+                                id="visualizar-dados">
+
+                            <span class="trilho"></span>
+
+                        </label>
+
+                        <span>
+                            Permitir que outros usuários visualizem os dados do seu perfil
+                        </span>
+
+                    </div>
+
+                    <div class="opcao-perfil">
+
+                        <label class="interruptor">
+
+                            <input
+                                type="checkbox"
+                                id="convites-automaticos">
+
+                            <span class="trilho"></span>
+
+                        </label>
+
+                        <span>
+                            Aceitar convites de projetos automaticamente
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="botao-salvar"
+                    id="botao-salvar"
+                    type="button">
+
+                    Salvar Alterações
+
+                </button>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="assets/perfil.js"></script>
+
+</body>
+
+</html>

@@ -244,10 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lista.appendChild(item);
     });
 
-    /* =========================
-   CENAS
-========================= */
-
 const adicionarCena = document.getElementById("adicionar-cena");
 const minhasCenas = document.getElementById("minhas-cenas");
 const menuCenas = document.getElementById("menu-cenas");
@@ -365,6 +361,277 @@ if (minhasCenas && listaCenas) {
 }
 
 
-// Carrega as cenas quando a página abre
 atualizarListaCenas();
+
+const botaoMenu = document.getElementById("menu-toggle");
+const menuConfiguracoes =
+    document.getElementById("menu-configuracoes");
+
+
+if (botaoMenu && menuConfiguracoes) {
+
+    botaoMenu.addEventListener("click", function () {
+
+        menuConfiguracoes.classList.toggle("aberto");
+
+    });
+
+}
+
+const permitirRastreamento =
+    document.getElementById("permitir-rastreamento");
+
+const ocultarIP =
+    document.getElementById("ocultar-ip");
+
+const sincronizar =
+    document.getElementById("sincronizar");
+
+
+if (permitirRastreamento) {
+
+    permitirRastreamento.checked =
+        localStorage.getItem(
+            "permitirRastreamento"
+        ) === "true";
+
+
+    permitirRastreamento.addEventListener(
+        "change",
+        function () {
+
+            localStorage.setItem(
+                "permitirRastreamento",
+                permitirRastreamento.checked
+            );
+
+        }
+    );
+
+}
+
+
+if (ocultarIP) {
+
+    ocultarIP.checked =
+        localStorage.getItem(
+            "ocultarIP"
+        ) === "true";
+
+
+    ocultarIP.addEventListener(
+        "change",
+        function () {
+
+            localStorage.setItem(
+                "ocultarIP",
+                ocultarIP.checked
+            );
+
+        }
+    );
+
+}
+
+
+if (sincronizar) {
+
+    sincronizar.checked =
+        localStorage.getItem(
+            "sincronizarDispositivos"
+        ) === "true";
+
+
+    sincronizar.addEventListener(
+        "change",
+        function () {
+
+            localStorage.setItem(
+                "sincronizarDispositivos",
+                sincronizar.checked
+            );
+
+        }
+    );
+
+}
+
+const botaoAlterarSenha =
+    document.getElementById("alterar-senha");
+
+
+if (botaoAlterarSenha) {
+
+    botaoAlterarSenha.addEventListener(
+        "click",
+        function () {
+
+            const senhaAtual =
+                document.getElementById(
+                    "senha-atual"
+                );
+
+            const novaSenha =
+                document.getElementById(
+                    "nova-senha"
+                );
+
+            const confirmarSenha =
+                document.getElementById(
+                    "confirmar-senha"
+                );
+
+
+            if (
+                !senhaAtual ||
+                !novaSenha ||
+                !confirmarSenha
+            ) {
+                return;
+            }
+
+
+            if (
+                !senhaAtual.value ||
+                !novaSenha.value ||
+                !confirmarSenha.value
+            ) {
+
+                alert(
+                    "Preencha todos os campos."
+                );
+
+                return;
+            }
+
+
+            if (
+                novaSenha.value !==
+                confirmarSenha.value
+            ) {
+
+                alert(
+                    "As senhas não são iguais."
+                );
+
+                return;
+            }
+
+            localStorage.setItem(
+                "senhaAlterada",
+                "true"
+            );
+
+
+            alert(
+                "Senha alterada com sucesso!"
+            );
+
+
+            senhaAtual.value = "";
+            novaSenha.value = "";
+            confirmarSenha.value = "";
+
+        }
+    );
+
+}
+
+
+    <script>
+
+        const botoesPopup =
+            document.querySelectorAll(".botao-saiba-mais");
+
+        const popups =
+            document.querySelectorAll(".popup-fundo");
+
+        const botoesFechar =
+            document.querySelectorAll(".botao-fechar");
+
+
+        botoesPopup.forEach(function(botao) {
+
+            botao.addEventListener("click", function(evento) {
+
+                evento.preventDefault();
+                evento.stopPropagation();
+
+                const idPopup =
+                    botao.getAttribute("data-popup");
+
+                const popup =
+                    document.getElementById(idPopup);
+
+                if (popup) {
+
+                    popup.classList.add("aberto");
+
+                    document.body.style.overflow = "hidden";
+
+                }
+
+            });
+
+        });
+
+
+
+
+        botoesFechar.forEach(function(botao) {
+
+            botao.addEventListener("click", function() {
+
+                const popup =
+                    botao.closest(".popup-fundo");
+
+                if (popup) {
+
+                    popup.classList.remove("aberto");
+
+                    document.body.style.overflow = "";
+
+                }
+
+            });
+
+        });
+
+
+
+        popups.forEach(function(popup) {
+
+            popup.addEventListener("click", function(evento) {
+
+                if (evento.target === popup) {
+
+                    popup.classList.remove("aberto");
+
+                    document.body.style.overflow = "";
+
+                }
+
+            });
+
+        });
+
+
+        document.addEventListener("keydown", function(evento) {
+
+            if (evento.key === "Escape") {
+
+                popups.forEach(function(popup) {
+
+                    popup.classList.remove("aberto");
+
+                });
+
+                document.body.style.overflow = "";
+
+            }
+
+        });
+
+    </script>
+
 });

@@ -1,0 +1,681 @@
+/* =========================================================
+   SMARTCONTROL - PERFIL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #bcbcbc;
+
+    color: #eeeeee;
+}
+
+body {
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   PÁGINA
+========================================================= */
+
+.pagina-perfil {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: #bcbcbc;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.cabecalho {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    background: #000000;
+
+    display: flex;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.lado-esquerdo-cabecalho {
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================================
+   BOTÃO MENU
+========================================================= */
+
+.botao-menu {
+    width: 39px;
+    height: 39px;
+
+    margin-left: 30px;
+
+    border: none;
+    border-radius: 4px;
+
+    background: #3f3f3f;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+}
+
+.botao-menu span {
+    width: 25px;
+    height: 2px;
+
+    background: #dddddd;
+
+    display: block;
+}
+
+
+/* =========================================================
+   MARCA
+========================================================= */
+
+.marca {
+    display: flex;
+    align-items: center;
+
+    margin-left: 8px;
+}
+
+.icone-marca {
+    width: 0;
+    height: 0;
+
+    display: none;
+}
+
+.nome-marca {
+    font-size: 20px;
+
+    color: #eeeeee;
+
+    white-space: nowrap;
+}
+
+.nome-marca strong {
+    font-weight: 400;
+}
+
+.nome-marca em {
+    color: #d4e600;
+
+    font-style: normal;
+}
+
+
+/* =========================================================
+   BOTÃO VOLTAR
+========================================================= */
+
+.botao-voltar {
+    position: absolute;
+
+    right: 23px;
+    top: 24px;
+
+    width: 31px;
+    height: 31px;
+
+    border-radius: 50%;
+
+    border: 1px solid #eeeeee;
+
+    background: transparent;
+
+    color: #eeeeee;
+
+    font-size: 23px;
+
+    line-height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.botao-voltar:hover {
+    background: #222222;
+}
+
+
+/* =========================================================
+   MENU LATERAL
+========================================================= */
+
+.menu-lateral {
+    position: fixed;
+
+    top: 70px;
+    left: -220px;
+
+    width: 220px;
+
+    height: calc(100vh - 70px);
+
+    padding: 25px 15px;
+
+    background: #292929;
+
+    z-index: 900;
+
+    transition: left .25s ease;
+}
+
+.menu-lateral.aberto {
+    left: 0;
+}
+
+.link-menu {
+    width: 100%;
+    height: 40px;
+
+    margin-bottom: 8px;
+
+    padding: 0 12px;
+
+    border-radius: 4px;
+
+    background: #3c3c3c;
+
+    color: #eeeeee;
+
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 13px;
+}
+
+.link-menu:hover {
+    background: #505050;
+}
+
+.link-menu span {
+    width: 20px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   CONTEÚDO
+========================================================= */
+
+.conteudo-perfil {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding-top: 70px;
+
+    background: #3f3f3f;
+}
+
+
+/* =========================================================
+   BANNER
+========================================================= */
+
+.banner-perfil {
+    position: relative;
+
+    width: 100%;
+    height: 170px;
+
+    overflow: hidden;
+
+    background: #050505;
+}
+
+.imagem-banner {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================================================
+   ÁREA DE INFORMAÇÕES
+========================================================= */
+
+.area-informacoes {
+    position: relative;
+
+    width: 100%;
+    max-width: 422px;
+
+    min-height: 377px;
+
+    margin: 0 auto;
+
+    padding: 44px 16px 40px;
+
+    background: #404040;
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.area-avatar {
+    position: absolute;
+
+    top: -82px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 130px;
+    height: 130px;
+}
+
+.avatar-perfil {
+    width: 130px;
+    height: 130px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+
+    border: 3px solid #111111;
+}
+
+
+/* =========================================================
+   BOTÃO DA IMAGEM
+========================================================= */
+
+.botao-imagem {
+    position: absolute;
+
+    right: -3px;
+    bottom: 0;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #ffe11c;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.icone-imagem {
+    color: #555555;
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   NOME
+========================================================= */
+
+.area-nome {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    margin-bottom: 15px;
+}
+
+.nome-usuario {
+    font-size: 23px;
+
+    color: #eeeeee;
+}
+
+.botao-editar-nome {
+    border: none;
+
+    background: transparent;
+
+    color: #aaaaaa;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   BIO
+========================================================= */
+
+.campo-bio {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 8px;
+}
+
+.campo-bio label {
+    font-size: 14px;
+
+    margin-bottom: 4px;
+}
+
+.campo-bio textarea {
+    width: 100%;
+
+    min-height: 47px;
+
+    resize: none;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #eeeeee;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    padding: 0;
+}
+
+
+/* =========================================================
+   LINHA DE DADOS
+========================================================= */
+
+.linha-dados {
+    display: flex;
+
+    width: 100%;
+
+    gap: 35px;
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.campo-dado {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.campo-dado label {
+    font-size: 14px;
+
+    margin-bottom: 2px;
+}
+
+.campo-dado input {
+    height: 19px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 7px;
+
+    background: #e8e8e8;
+
+    color: #222222;
+
+    padding: 2px 7px;
+
+    font-size: 10px;
+}
+
+.campo-dado.email {
+    width: 256px;
+}
+
+.campo-dado.identificacao {
+    width: 65px;
+}
+
+.campo-dado.identificacao input {
+    width: 65px;
+}
+
+.campo-dado.telefone {
+    width: 256px;
+
+    margin-top: 5px;
+}
+
+.campo-dado.telefone input {
+    width: 256px;
+}
+
+
+/* =========================================================
+   OPÇÕES
+========================================================= */
+
+.opcoes-perfil {
+    width: 100%;
+
+    margin-top: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.opcao-perfil {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 11px;
+
+    color: #eeeeee;
+}
+
+
+/* =========================================================
+   INTERRUPTOR
+========================================================= */
+
+.interruptor {
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 47px;
+    height: 20px;
+
+    cursor: pointer;
+}
+
+.interruptor input {
+    display: none;
+}
+
+.trilho {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 20px;
+
+    background: #777777;
+}
+
+.trilho::before {
+    content: "";
+
+    position: absolute;
+
+    left: 2px;
+    top: 2px;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    transition: .2s ease;
+}
+
+.interruptor input:checked + .trilho {
+    background: #b9b9b9;
+}
+
+.interruptor input:checked + .trilho::before {
+    left: 29px;
+
+    background: #ffe11c;
+}
+
+
+/* =========================================================
+   BOTÃO SALVAR
+========================================================= */
+
+.botao-salvar {
+    position: absolute;
+
+    right: 16px;
+    bottom: 40px;
+
+    height: 27px;
+
+    padding: 0 7px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #ffe11c;
+
+    color: #111111;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.botao-salvar:hover {
+    background: #ffea58;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .botao-menu {
+        margin-left: 15px;
+    }
+
+    .nome-marca {
+        font-size: 17px;
+    }
+
+    .botao-voltar {
+        right: 15px;
+    }
+
+    .area-informacoes {
+        width: 100%;
+
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .linha-dados {
+        gap: 15px;
+    }
+
+    .campo-dado.email {
+        width: calc(100% - 80px);
+    }
+
+    .campo-dado.telefone {
+        width: 100%;
+    }
+
+    .campo-dado.telefone input {
+        width: 100%;
+    }
+
+    .opcao-perfil {
+        font-size: 9px;
+    }
+}
