@@ -122,7 +122,7 @@
         <main class="pagina-dispositivos">
             <section class="painel-dispositivos" aria-label="Lista de dispositivos">
                 <div class="lista-dispositivos" id="lista-dispositivos">
-                    <button class="item-dispositivo" type="button">
+                    <button class="item-dispositivo item-camera" type="button" data-camera="1">
                         <span class="icone-dispositivo" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
                         <span class="nome-dispositivo">Camera 01</span>
                     </button>
@@ -149,7 +149,74 @@
             </section>
         </main>
 
-        <script src="assets/js/main.js"></script>
+        <!-- Visualização das 3 câmeras -->
+        <div class="modal-dispositivos" id="modal-cameras" aria-hidden="true">
+            <div class="modal-cameras-conteudo" role="dialog" aria-modal="true" aria-labelledby="titulo-cameras">
+                <div class="cabecalho-cameras">
+                    <h2 id="titulo-cameras">Câmeras</h2>
+                    <button class="botao-fechar-dispositivo" type="button" data-fechar-modal="modal-cameras" aria-label="Fechar">×</button>
+                </div>
+
+                <div class="grade-cameras">
+                    <article class="camera-card">
+                        <div class="camera-titulo">Câmera 01</div>
+                        <div class="camera-imagem">
+                            <img src="assets/images/cameras/camera01.jpg" alt="Imagem da Câmera 01" onerror="this.style.display='none'; this.parentElement.classList.add('sem-imagem')">
+                            <span>Imagem da câmera 01</span>
+                            <button class="camera-seta esquerda" type="button" data-camera-nav="prev" aria-label="Câmera anterior">‹</button>
+                            <button class="camera-seta direita" type="button" data-camera-nav="next" aria-label="Próxima câmera">›</button>
+                        </div>
+                    </article>
+
+                    <article class="camera-card">
+                        <div class="camera-titulo">Câmera 02</div>
+                        <div class="camera-imagem">
+                            <img src="assets/images/cameras/camera02.jpg" alt="Imagem da Câmera 02" onerror="this.style.display='none'; this.parentElement.classList.add('sem-imagem')">
+                            <span>Imagem da câmera 02</span>
+                            <button class="camera-seta esquerda" type="button" data-camera-nav="prev" aria-label="Câmera anterior">‹</button>
+                            <button class="camera-seta direita" type="button" data-camera-nav="next" aria-label="Próxima câmera">›</button>
+                        </div>
+                    </article>
+
+                    <article class="camera-card">
+                        <div class="camera-titulo">Câmera 03</div>
+                        <div class="camera-imagem">
+                            <img src="assets/images/cameras/camera03.jpg" alt="Imagem da Câmera 03" onerror="this.style.display='none'; this.parentElement.classList.add('sem-imagem')">
+                            <span>Imagem da câmera 03</span>
+                            <button class="camera-seta esquerda" type="button" data-camera-nav="prev" aria-label="Câmera anterior">‹</button>
+                            <button class="camera-seta direita" type="button" data-camera-nav="next" aria-label="Próxima câmera">›</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- Novo dispositivo -->
+        <div class="modal-dispositivos" id="modal-novo-dispositivo" aria-hidden="true">
+            <div class="modal-novo-conteudo" role="dialog" aria-modal="true" aria-labelledby="titulo-novo-dispositivo">
+                <div class="cabecalho-modal-simples">
+                    <h2 id="titulo-novo-dispositivo">Novo Dispositivo</h2>
+                    <button class="botao-fechar-dispositivo" type="button" data-fechar-modal="modal-novo-dispositivo" aria-label="Fechar">×</button>
+                </div>
+                <form id="form-novo-dispositivo" class="form-novo-dispositivo">
+                    <label for="nome-novo-dispositivo">Nome Dispositivo</label>
+                    <input id="nome-novo-dispositivo" type="text" required autocomplete="off">
+                    <label for="tipo-novo-dispositivo">Tipo Dispositivo</label>
+                    <select id="tipo-novo-dispositivo" required>
+                        <option value="">Selecione</option>
+                        <option value="camera">Câmera</option>
+                        <option value="computador">Computador</option>
+                        <option value="smartphone">Smartphone</option>
+                        <option value="notebook">Notebook</option>
+                        <option value="bluetooth">Bluetooth</option>
+                    </select>
+                    <button type="submit">Adicionar Dispositivo</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="assets/js/global/main.js"></script>
+        <script src="assets/js/dispositivos/dispositivos.js"></script>
     </div>
 
 </body>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil da Conexão - SmartControl</title>
+    <link rel="stylesheet" href="assets/perfil_conexao.css">
+</head>
+<body>
+    <div class="pagina-perfil-conexao">
+        <header class="cabecalho-conexao">
+            <div class="marca-conexao">
+                <button class="botao-menu-conexao" id="botao-menu-conexao" type="button" aria-label="Abrir menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <span><strong>Smart</strong><em>Control</em></span>
+            </div>
+            <button class="botao-voltar-conexao" id="botao-voltar-conexao" type="button" aria-label="Voltar">←</button>
+        </header>
+
+        <aside class="menu-conexao" id="menu-conexao">
+            <a href="dashboard.html">▦ <span>Início</span></a>
+            <a href="dispositivos.html">▣ <span>Dispositivos</span></a>
+            <a href="conexoes.html">◉ <span>Conexões</span></a>
+            <a href="assistencia.html">⚑ <span>Assistência</span></a>
+            <a href="cenas.html">▶ <span>Cenas</span></a>
+        </aside>
+
+        <main class="conteudo-perfil-conexao">
+            <section class="banner-conexao" id="banner-conexao"></section>
+
+            <section class="cartao-perfil-conexao">
+                <div class="avatar-conexao-grande">
+                    <img id="avatar-conexao-grande" src="assets/images/logosmartcontrol.png" alt="Foto de perfil">
+                </div>
+
+                <div class="identidade-conexao">
+                    <h1 id="nome-conexao-perfil">Usuário</h1>
+                    <span id="papel-conexao-perfil">Membro</span>
+                </div>
+
+                <div class="bloco-perfil">
+                    <label>Bio</label>
+                    <p id="bio-conexao-perfil"></p>
+                </div>
+
+                <div class="dados-perfil-conexao">
+                    <div><label>E-mail</label><span id="email-conexao-perfil"></span></div>
+                    <div><label>ID</label><span id="id-conexao-perfil"></span></div>
+                    <div><label>Telefone</label><span id="telefone-conexao-perfil"></span></div>
+                </div>
+
+                <div class="acoes-perfil-conexao">
+                    <button type="button" id="botao-voltar-lista">Voltar para Conexões</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/perfil_conexao/perfil_conexao.js"></script>
+</body>
+</html>

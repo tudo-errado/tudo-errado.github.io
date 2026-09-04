@@ -359,3 +359,154 @@ html[data-theme="dark"] .painel-dispositivos { background:#303133; }
 html[data-theme="dark"] .item-dispositivo { background:#eee; color:#1b1b1b; }
 
 @media (max-width:640px) { .painel-dispositivos { padding:14px 18px 20px; } }
+
+/* ==============================
+   MODAIS DOS DISPOSITIVOS
+   ============================== */
+body.modal-aberto { overflow: hidden; }
+
+.modal-dispositivos {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0,0,0,.68);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .2s ease, visibility .2s ease;
+}
+.modal-dispositivos.aberto {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal-cameras-conteudo {
+    width: min(1120px, 96vw);
+    max-height: 92vh;
+    overflow: auto;
+    background: #303030;
+    border-radius: 8px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.55);
+}
+.cabecalho-cameras, .cabecalho-modal-simples {
+    height: 46px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.cabecalho-cameras h2, .cabecalho-modal-simples h2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+.botao-fechar-dispositivo {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 4px;
+    background: #c879a0;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+.botao-fechar-dispositivo:hover { filter: brightness(1.1); }
+
+.grade-cameras {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    padding: 14px;
+}
+.camera-card { background: #1d1d1d; min-width: 0; }
+.camera-titulo {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    background: #000;
+}
+.camera-imagem {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 12px;
+}
+.camera-imagem img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.camera-imagem:not(.sem-imagem) > span { display: none; }
+.camera-imagem.sem-imagem { background: repeating-linear-gradient(0deg, #111 0 3px, #222 3px 6px); }
+.camera-seta {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background: rgba(0,0,0,.25);
+    color: #fff;
+    width: 30px;
+    height: 50px;
+    font-size: 32px;
+    cursor: pointer;
+}
+.camera-seta:hover { background: rgba(0,0,0,.55); }
+.camera-seta.esquerda { left: 4px; }
+.camera-seta.direita { right: 4px; }
+
+.modal-novo-conteudo {
+    width: min(390px, 92vw);
+    background: #3a3a3a;
+    border-radius: 0 0 30px 30px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(0,0,0,.55);
+}
+.form-novo-dispositivo {
+    padding: 18px 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.form-novo-dispositivo label { color: #f2f2f2; font-size: 12px; margin-top: 3px; }
+.form-novo-dispositivo input, .form-novo-dispositivo select {
+    width: 100%;
+    height: 34px;
+    border: 0;
+    border-radius: 6px;
+    padding: 0 10px;
+    background: #eee;
+    color: #222;
+    font: inherit;
+}
+.form-novo-dispositivo button {
+    align-self: center;
+    margin-top: 14px;
+    border: 0;
+    border-radius: 5px;
+    padding: 8px 14px;
+    background: #aaa;
+    color: #111;
+    font-weight: 600;
+    cursor: pointer;
+}
+.form-novo-dispositivo button:hover { background: var(--amarelo); }
+
+@media (max-width: 800px) {
+    .grade-cameras { grid-template-columns: 1fr; }
+    .modal-cameras-conteudo { max-height: 90vh; }
+}
